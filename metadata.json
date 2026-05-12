@@ -1,0 +1,9 @@
+{
+  "name": "Sabrina: Guarded Echoes",
+  "description": "An intimate, voice-driven experience with Sabrina, a guarded survivor navigating trust and trauma.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "majorCapabilities": []
+}

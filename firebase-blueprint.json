@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "Echo": {
+      "title": "Echo",
+      "description": "A saved conversation session between Nate and Sabrina.",
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "description": "ISO timestamp of when the session was saved."
+        },
+        "transcript": {
+          "type": "array",
+          "description": "The sequence of messages in the session.",
+          "items": {
+            "$ref": "#/entities/TranscriptPart"
+          }
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this echo."
+        }
+      },
+      "required": ["timestamp", "transcript", "userId"]
+    },
+    "TranscriptPart": {
+      "title": "TranscriptPart",
+      "description": "A single message in a transcript.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "model"]
+        }
+      },
+      "required": ["text", "role"]
+    }
+  },
+  "firestore": {
+    "users/{userId}/echoes/{echoId}": {
+      "schema": "Echo",
+      "description": "User's saved conversations."
+    }
+  }
+}
